@@ -13,6 +13,9 @@ echo "=== 1. Синхронизируем файлы в $MEGA_ANALYTICS_DIR ==="
 cp -r backend "$MEGA_ANALYTICS_DIR/"
 cp -r frontend "$MEGA_ANALYTICS_DIR/"
 cp requirements.txt "$MEGA_ANALYTICS_DIR/"
+[ -f .htaccess ] && cp .htaccess "$MEGA_ANALYTICS_DIR/"
+[ -f .htpasswd ] && cp .htpasswd "$MEGA_ANALYTICS_DIR/"
+find "$MEGA_ANALYTICS_DIR" -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 
 echo "=== 2. Коммитим и пушим в репозиторий mega для автодеплоя на party.hello-park.io ==="
 cd "/Users/dima/Desktop/DR-construct-Mega"
